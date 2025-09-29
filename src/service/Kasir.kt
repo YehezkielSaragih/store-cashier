@@ -15,7 +15,11 @@ object Kasir {
         val subtotal = keranjang.totalKotor()
 
         // Ambil diskon dari voucher
-        val diskon = kodeVoucher?.let { Voucher.getDiskon(it) }
+        val diskon: Diskon? = if (kodeVoucher != null) {
+            Voucher.getDiskon(kodeVoucher)
+        } else {
+            null
+        }
 
         val potongan = diskon?.hitung(subtotal) ?: 0
         val totalSetelahDiskon = (subtotal - potongan).coerceAtLeast(0)

@@ -27,10 +27,20 @@ class Keranjang {
 
     fun totalKotor(): Int = items.sumOf { it.produk.harga * it.jumlah }
 
-    fun totalBersih(diskon: Diskon): Int {
+    fun totalBersih(kodeVoucher: String? = null, ppn: PajakPPN? = null): Int {
         val subtotal = totalKotor()
-        val potongan = diskon.hitung(subtotal)
-        val total = subtotal - potongan
-        return if (total < 0) 0 else total
+
+        // Ambil diskon dari voucher
+        val diskon: Diskon? = if (kodeVoucher != null) {
+            Voucher.getDiskon(kodeVoucher)
+        } else {
+            null
+        }
+        val potongan = diskon?.hitung(subtotal) ?: 0
+        val totalSetelahDiskon = (subtotal - potongan).coerceAtLeast(0)
+
+        val ppnNominal = ppn?.hitung(totalSetelahDiskon) ?: 0
+        return (totalSetelahDiskon + ppnNominal).coerceAtLeast(0)
     }
+
 }
