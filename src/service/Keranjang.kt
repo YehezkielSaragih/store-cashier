@@ -42,5 +42,4 @@ class Keranjang {
         val ppnNominal = ppn?.hitung(totalSetelahDiskon) ?: 0
         return (totalSetelahDiskon + ppnNominal).coerceAtLeast(0)
     }
-
 }
