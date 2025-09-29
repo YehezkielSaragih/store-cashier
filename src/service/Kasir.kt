@@ -43,11 +43,11 @@ object Kasir {
         println("Kode     : ${struk.kode}")
         println("Tanggal  : ${struk.tanggal}")
         println("----------------------------")
-        println(String.format("%-12s %5s %10s %12s", "Nama", "Qty", "Harga", "Total"))
+        println(String.format("%-10s %3s %8s %10s", "Nama", "Qty", "Harga", "Total"))
         struk.items.forEach { item ->
             println(
                 String.format(
-                    "%-12s %5d %10d %12d",
+                    "%-10s %3d %8d %10d",
                     item.produk.nama,
                     item.jumlah,
                     item.hargaSatuan,
@@ -56,12 +56,12 @@ object Kasir {
             )
         }
         println("----------------------------")
-        println(String.format("%-20s : %s", "Voucher", struk.kodeVoucher))
-        println(String.format("%-20s : %s", "Diskon", struk.namaDiskon))
-        println(String.format("%-20s : %12d", "Subtotal", struk.subtotal))
-        println(String.format("%-20s : %12d", "Diskon", struk.potongan))
-        println(String.format("%-20s : %12d", "PPN 11%", struk.ppn))
-        println(String.format("%-20s : %12d", "Total", struk.total))
+        println(String.format("%-15s: %-15s", "Voucher", struk.kodeVoucher))
+        println(String.format("%-15s: %-15s", "Diskon", struk.namaDiskon))
+        println(String.format("%-15s: %-12d", "Subtotal", struk.subtotal))
+        println(String.format("%-15s: %-12d", "Diskon", struk.potongan))
+        println(String.format("%-15s: %-12d", "PPN 11%", struk.ppn))
+        println(String.format("%-15s: %-12d", "Total", struk.total))
         println("============================")
     }
 }

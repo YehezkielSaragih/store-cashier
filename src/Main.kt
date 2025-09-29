@@ -25,21 +25,21 @@ fun main() {
 
     // Struk with voucher "HEMAT10"
     val strukHemat10 = Kasir.checkout(keranjang, kodeVoucher = "HEMAT10", ppn = ppn)
-    println("\n=== Struk with Voucher HEMAT10 + PPN 11% ===")
+    println("\nStruk with Voucher HEMAT10 + PPN 11% ")
     Kasir.cetakStruk(strukHemat10)
 
     // Struk with voucher "POTONG20"
     val strukPotong20 = Kasir.checkout(keranjang, kodeVoucher = "POTONG20K", ppn = ppn)
-    println("\n=== Struk with Voucher POTONG20 + PPN 11% ===")
+    println("\nStruk with Voucher POTONG20 + PPN 11%")
     Kasir.cetakStruk(strukPotong20)
 
     // Struk with voucher "BERTINGKAT"
     val strukBertingkat = Kasir.checkout(keranjang, kodeVoucher = "BERTINGKAT", ppn = ppn)
-    println("\n=== Struk with Voucher BERTINGKAT + PPN 11% ===")
+    println("\nStruk with Voucher BERTINGKAT + PPN 11%")
     Kasir.cetakStruk(strukBertingkat)
 
     // Struk withOUT voucher
     val strukTanpaVoucher = Kasir.checkout(keranjang, kodeVoucher = null, ppn = ppn)
-    println("\n=== Struk without Voucher + PPN 11% ===")
+    println("\nStruk without Voucher + PPN 11%")
     Kasir.cetakStruk(strukTanpaVoucher)
 }
