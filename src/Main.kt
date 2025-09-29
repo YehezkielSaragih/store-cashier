@@ -1,14 +1,20 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
+import model.*
+import service.*
+import util.*
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
-    }
+fun main() {
+
+    val p1 = Produk(nama = "Sabun", harga = 5000)
+    val p2 = Produk(nama = "Shampoo", harga = 15000)
+    val p3 = Produk(nama = "Odol", harga = 12000)
+
+    val keranjang = Keranjang()
+    keranjang.tambahProduk(p1, 2)
+    keranjang.tambahProduk(p2, 1)
+    keranjang.tambahProduk(p3, 3)
+
+    val diskon = DiskonPersen(10)
+
+    val struk = Kasir.checkout(keranjang, diskon)
+    Kasir.cetakStruk(struk)
 }

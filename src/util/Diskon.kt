@@ -1,4 +1,5 @@
-package util;
+package util
 
-public class Diskon {
+interface Diskon {
+    fun hitung(subtotal: Int): Int
 }
