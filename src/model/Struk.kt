@@ -10,6 +10,7 @@ data class Struk(
     val items: List<ItemKeranjang>,
     val subtotal: Int,
     val potongan: Int,
+    val ppn: Int,
     val total: Int
 ) {
     companion object {
