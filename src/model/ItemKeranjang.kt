@@ -2,8 +2,9 @@ package model
 
 data class ItemKeranjang(
     val produk: Produk,
-    var jumlah: Int
+    var jumlah: Int,
+    val hargaSatuan: Int = produk.harga
 ) {
     val subtotal: Int
-        get() = produk.harga * jumlah
+        get() = hargaSatuan * jumlah
 }

@@ -6,7 +6,7 @@ import kotlin.random.Random
 
 data class Struk(
     val kode: String = generateKode(),
-    val tanggal: String,
+    val tanggal: String = nowFormatted(),
     val items: List<ItemKeranjang>,
     val subtotal: Int,
     val potongan: Int,

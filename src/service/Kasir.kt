@@ -11,8 +11,6 @@ object Kasir {
         val total = subtotal - potongan
 
         return Struk(
-            kode = Struk.generateKode(),
-            tanggal = Struk.nowFormatted(),
             items = items,
             subtotal = subtotal,
             potongan = potongan,
