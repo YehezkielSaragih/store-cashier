@@ -11,7 +11,9 @@ data class Struk(
     val subtotal: Int,
     val potongan: Int,
     val ppn: Int,
-    val total: Int
+    val total: Int,
+    val kodeVoucher: String = "N/A",
+    val namaDiskon: String = "Tanpa Diskon"
 ) {
     companion object {
         fun generateKode(): String {

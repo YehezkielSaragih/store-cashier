@@ -1,6 +1,7 @@
 package util
 
 class DiskonBertingkat : Diskon {
+    override val nama = "Diskon Bertingkat"
     override fun hitung(subtotal: Int): Int {
         val persen = when {
             subtotal >= 500_000 -> 10

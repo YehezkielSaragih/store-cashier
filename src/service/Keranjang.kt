@@ -7,13 +7,15 @@ class Keranjang {
 
     private val items = mutableListOf<ItemKeranjang>()
 
-    fun tambahProduk(produk: Produk, qty: Int = 1) {
+    fun tambahProduk(produk: Produk, jumlah: Int = 1) {
+        // Check if the product already exists in the cart by matching its ID
         val existing = items.find { it.produk.id == produk.id }
         if (existing != null) {
-            val idx = items.indexOf(existing)
-            items[idx] = existing.copy(jumlah = existing.jumlah + qty)
+            // If the product is already in the cart, update its quantity
+            existing.jumlah += jumlah
         } else {
-            items.add(ItemKeranjang(produk, qty))
+            // If the product is not in the cart, add it as a new item
+            items.add(ItemKeranjang(produk, jumlah))
         }
     }
 

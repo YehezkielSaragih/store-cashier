@@ -3,28 +3,43 @@ import service.*
 import util.*
 
 fun main() {
+
+    // Setup product
     val p1 = Produk(nama = "Sabun", harga = 50000)
     val p2 = Produk(nama = "Shampoo", harga = 10000)
     val p3 = Produk(nama = "Odol", harga = 120000)
 
+    // Setup cart
     val keranjang = Keranjang()
     keranjang.tambahProduk(p1, 2)
     keranjang.tambahProduk(p2, 1)
     keranjang.tambahProduk(p3, 3)
 
-    // Pakai voucher diskon
-    val diskonVoucher = Voucher.getDiskon("HEMAT10") // 10% potongan
+    // Delete product
+    println("Total kotor sebelum hapus: ${keranjang.totalKotor()}")
+    keranjang.hapusProduk(p2)
+    println("Total kotor setelah hapus Shampoo: ${keranjang.totalKotor()}")
 
-    // Pakai PPN 11%
+    // Apply PPN 11%
     val ppn = PajakPPN(11)
 
-    val strukVoucher = Kasir.checkout(keranjang, diskonVoucher, ppn)
-    println("\n=== Struk dengan Voucher HEMAT10 + PPN 11% ===")
-    Kasir.cetakStruk(strukVoucher)
+    // Struk with voucher "HEMAT10"
+    val strukHemat10 = Kasir.checkout(keranjang, kodeVoucher = "HEMAT10", ppn = ppn)
+    println("\n=== Struk with Voucher HEMAT10 + PPN 11% ===")
+    Kasir.cetakStruk(strukHemat10)
 
-    // Diskon bertingkat
-    val diskonBertingkat = DiskonBertingkat()
-    val strukBertingkat = Kasir.checkout(keranjang, diskonBertingkat, ppn)
-    println("\n=== Struk dengan Diskon Bertingkat + PPN 11% ===")
+    // Struk with voucher "POTONG20"
+    val strukPotong20 = Kasir.checkout(keranjang, kodeVoucher = "POTONG20K", ppn = ppn)
+    println("\n=== Struk with Voucher POTONG20 + PPN 11% ===")
+    Kasir.cetakStruk(strukPotong20)
+
+    // Struk with voucher "BERTINGKAT"
+    val strukBertingkat = Kasir.checkout(keranjang, kodeVoucher = "BERTINGKAT", ppn = ppn)
+    println("\n=== Struk with Voucher BERTINGKAT + PPN 11% ===")
     Kasir.cetakStruk(strukBertingkat)
+
+    // Struk withOUT voucher
+    val strukTanpaVoucher = Kasir.checkout(keranjang, kodeVoucher = null, ppn = ppn)
+    println("\n=== Struk without Voucher + PPN 11% ===")
+    Kasir.cetakStruk(strukTanpaVoucher)
 }
